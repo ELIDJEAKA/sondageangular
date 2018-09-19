@@ -46,7 +46,7 @@
                 </h6>
                 <p class="list-group-item-text text-muted">
                   <i class="ft-check primary font-small-2"></i> Thank you
-                  <span class="float-right 
+                  <span class="float-right
                         primary">
                     <span class="badge badge-pill badge-primary">12</span>
                   </span>
@@ -158,16 +158,6 @@
           <div class="chat-body">
             <div class="chat-content" *ngFor="let message of chat.messages">
               <p *ngIf="chat.messageType === 'text'">{{ message }}</p>
-              <vg-player *ngIf="chat.messageType === 'audio'">
-                <audio [vgMedia]="media1" #media1 id="singleAudio" preload="auto" controls>
-                  <source [src]="message" type="audio/mp3">
-                </audio>
-              </vg-player>
-              <vg-player *ngIf="chat.messageType === 'video'" style="height: 250px; width: 250px">
-                <video [vgMedia]="media" #media id="singleVideo" preload="auto" controls>
-                  <source [src]="message" type="video/mp4">
-                </video>
-              </vg-player>
             </div>
           </div>
           <p class="time" *ngIf="chat.time !='' ">{{chat.time}}</p>

@@ -58,7 +58,7 @@
     "rxjs": "^5.5.2",
     "screenfull": "^3.3.1",
     "sweetalert2": "^5.3.8",
-    "videogular2": "^5.6.3",
+    "videogular2": "^6.3.0",
     "web-animations-js": "^2.2.5",
     "zone.js": "^0.8.18"
   },
@@ -81,7 +81,7 @@
     "protractor": "~5.1.2",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
-    "typescript": "2.4.0"
+    "typescript": "^2.6.2"
   },
   "engines": {
     "node": "9.3.0",

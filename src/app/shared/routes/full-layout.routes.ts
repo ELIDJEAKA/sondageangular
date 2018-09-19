@@ -62,9 +62,5 @@ export const Full_ROUTES: Routes = [
   {
     path: 'taskboard',
     loadChildren: './taskboard/taskboard.module#TaskboardModule'
-  },
-  {
-    path: 'player',
-    loadChildren: './player/player.module#PlayerModule'
   }
 ];
