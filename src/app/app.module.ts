@@ -16,6 +16,9 @@ import { CustomOption } from "./shared/toastr/custom-option";
 
 import * as $ from 'jquery';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
+
 
 @NgModule({
     declarations: [
@@ -31,7 +34,10 @@ import * as $ from 'jquery';
         NgbModule.forRoot(),
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBr5_picK8YJK7fFR2CPzTVMj6GG1TtRGo'
-        })
+        }),
+        FormsModule,
+        ReactiveFormsModule,
+        HttpModule
     ],
     providers: [
         //Toastr providers

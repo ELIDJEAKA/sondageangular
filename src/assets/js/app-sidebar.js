@@ -19,9 +19,9 @@
 
     $sidebar_content.perfectScrollbar();
 
-    if( $sidebar_img_container.length !== 0 && $sidebar_img !== undefined ){
-        $sidebar_img_container.css('background-image','url("' + $sidebar_img + '")');
-    }
+    // if( $sidebar_img_container.length !== 0 && $sidebar_img !== undefined ){
+    //     $sidebar_img_container.css('background-image','url("' + $sidebar_img + '")');
+    // }
 
     if(!$wrapper.hasClass('nav-collapsed')){
         $sidebar_content.find('li.active').parents('li').addClass('open');
@@ -84,7 +84,7 @@
             }
         });
 
-        
+
 
         setTimeout(function() {
             $children.addClass('is-shown');

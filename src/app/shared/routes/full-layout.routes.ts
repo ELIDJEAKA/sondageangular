@@ -62,5 +62,9 @@ export const Full_ROUTES: Routes = [
   {
     path: 'taskboard',
     loadChildren: './taskboard/taskboard.module#TaskboardModule'
+  },
+  {
+    path: 'zone',
+    loadChildren: './zone/zone.module#ZoneModule'
   }
 ];

@@ -1,0 +1,169 @@
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="content-header">Liste des Zones</div>
+            <p class="content-sub-header">La liste de toute les zones créés sur l'application</p>
+
+        </div>
+    </div>
+    <div class="row" *ngIf="zones != undefined">
+      <div class="col-sm-12">
+        <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Rechercher' (keyup)='updateFilter($event)'
+        />
+        <button type="button" class="btn btn-raised btn-danger float-right"  (click)="open(infoElement,content)">Ajouter une Nouvelle zone</button>
+
+        <ngx-datatable
+          class="bootstrap"
+          [rows]="rows"
+          [loadingIndicator]="loadingIndicator"
+          [columnMode]="'force'"
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [reorderable]="reorderable"
+          [limit]="10"
+          [sortType]="'multi'"
+          [reorderable]="reorderable"
+          >
+          <ngx-datatable-column name="Quartier">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <div class="text-uppercase">
+                <strong>{{row['quartier']}}</strong>
+              </div>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Chef de zone">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+               {{row['chef_zone']}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="couvert">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+               {{row['couvert']}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Nombre de partisans">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              {{row['nb_partisans']}}
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column name="Actions">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <a class="info p-0" data-original-title="" title="" #infoElement (click)="open(infoElement,content,row)">
+                  <i class="ft-user font-medium-3 mr-2"></i>
+              </a>
+              <a class="danger p-0" data-original-title="" title="" #btnElement (click)="openDelete(btnElement, confirm,row)">
+                  <i class="ft-x font-medium-3 mr-2"></i>
+              </a>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </div>
+    </div>
+</section>
+
+
+
+<section>
+  <!-- modal details   -->
+  <ng-template #content let-c="close" let-d="dismiss" >
+      <div class="modal-header">
+          <h4 class="modal-title">Infos sur la zone </h4>
+          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+          <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
+      <div class="modal-body">
+        <form class="form" [formGroup]="zoneForm" autocomplete="off">
+          <div class="form-body">
+            <h4 class="form-section"><i class="ft-info"></i> Infos  </h4>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="userinput1">Quatier</label>
+                  <input type="text"  class="form-control border-primary"  name="quartier"  formControlName="quartier" value={{zone.quartier}}>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="form-group">
+                  <label for="userinput6">Couvert par la Campagne</label>
+                  <select class="form-control"   name="couvert" formControlName="couvert" value="{{zone.couvert}}">
+                      <option value="oui">oui</option>
+                      <option value="non">non</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="userinput2">Chef de quartier</label>
+              <input type="text"  class="form-control border-primary"  name="company" formControlName="chef_zone" value="{{zone.chef_zone}}">
+            </div>
+
+            <h4 class="form-section"><i class="fa fa-pie-chart"></i> Stats </h4>
+
+            <div class="form-group">
+              <label for="userinput5">Nombre de partisans</label>
+              <input class="form-control border-primary" type="number" value="{{zone.nb_partisans}}"  id="userinput5" readonly >
+            </div>
+
+            <div class="form-group">
+              <label>Evenements</label>
+              <input class="form-control border-primary" id="userinput7" type="number" readonly value="{{zone.event}}" >
+            </div>
+
+          </div>
+
+          <div class="form-actions right">
+            <button type="button" class="btn btn-raised btn-warning mr-1">
+              <i class="ft-x"></i> Annuler
+            </button>
+            <button type="button" class="btn btn-raised btn-primary" (click)="createZone()">
+              <i class="fa fa-check-square-o"></i> Enregistrer
+            </button>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-raised" (click)="c('Close click')" id="closeform">Fermer</button>
+      </div>
+  </ng-template>
+  <!-- end modal details  -->
+
+  <!-- confirm  -->
+  <ng-template #confirm let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title text-center text-danger">{{ options.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" #btnClose >
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>{{ options.message }}</p>
+      Responsable Zone :  {{zone.chef_zone}}    <br/>
+      Nombre de partisans :{{zone.nb_partisans}}    <br/>
+      Couvert  : {{zone.couvert}}  <br/>
+    </div>
+    <div class="modal-footer">
+      <button id="closed" type="button" class="btn btn-raised btn-primary" (click)="c('Close click')" >Annuler</button>
+      <button type="button" class="btn btn-raised btn-danger"  (click)="deleteZone()">Supprimer</button>
+    </div>
+  </ng-template>
+  <!-- end confirm  -->
+
+  <!-- popup  -->
+  <ng-template #popup let-c="close" let-d="dismiss">
+    <div class="modal-header text-center">
+      <h4 class="modal-title text-center text-success">{{ info.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" #btnPopClose id="btnPopClose" >
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="text-center">{{ info.message }}</p>
+    </div>
+  </ng-template>
+  <!-- end popup  -->
+</section>
+<!--Basic DataTable Ends-->
