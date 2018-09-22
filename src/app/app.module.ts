@@ -24,7 +24,7 @@ import { HttpModule } from '@angular/http';
     declarations: [
         AppComponent,
         FullLayoutComponent,
-        ContentLayoutComponent
+        ContentLayoutComponent,
     ],
     imports: [
         BrowserAnimationsModule,

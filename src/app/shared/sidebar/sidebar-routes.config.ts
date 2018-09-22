@@ -10,6 +10,7 @@ export const ROUTES: RouteInfo[] = [
         ]
     },
     { path: '/zone', title: 'Gestion des Zones', icon: 'fa fa-map-marker', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+    { path: '/partisan', title: 'Gestion des Partisans', icon: 'fa fa-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/colorpalettes', title: 'Color Palette', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/inbox', title: 'Inbox', icon: 'ft-mail', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/chat', title: 'Chat', icon: 'ft-message-square', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },

@@ -66,5 +66,9 @@ export const Full_ROUTES: Routes = [
   {
     path: 'zone',
     loadChildren: './zone/zone.module#ZoneModule'
+  },
+  {
+    path: 'partisan',
+    loadChildren: './partisan/partisan.module#PartisanModule'
   }
 ];
