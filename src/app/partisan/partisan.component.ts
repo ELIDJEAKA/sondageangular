@@ -27,7 +27,6 @@ export class PartisanComponent implements OnInit {
   loadingIndicator: boolean = true;
   reorderable: boolean = true;
 
-  clients  : any;
   partisans  : any;
   zones  : any;
   partisan : any = {"fullname":"", "datenaiss": 0, "sexe":"M", "profession" : "", "lieu_residence" : "","contact":"","email":"","cni":"","carte_electeur":false,"num_carte_electeur":"","lieu_vote":"","avatar":"", "statut":"", "zone":""}; // the partisan seclected
