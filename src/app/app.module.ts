@@ -20,11 +20,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 
+
 @NgModule({
     declarations: [
         AppComponent,
         FullLayoutComponent,
         ContentLayoutComponent,
+
     ],
     imports: [
         BrowserAnimationsModule,

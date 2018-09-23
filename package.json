@@ -53,7 +53,7 @@
     "ng2-toastr": "^4.1.2",
     "ng2-validation": "^4.2.0",
     "ngx-quill": "^2.0.3",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.9.3",
     "nouislider": "^10.1.0",
     "resize-observer-polyfill": "^1.4.2",
     "rxjs": "^5.5.2",
@@ -79,7 +79,7 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
-    "protractor": "~5.1.2",
+    "protractor": "^5.4.1",
     "ts-node": "^3.3.0",
     "tslint": "^5.7.0",
     "typescript": "^2.6.2"

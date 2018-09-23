@@ -70,5 +70,9 @@ export const Full_ROUTES: Routes = [
   {
     path: 'partisan',
     loadChildren: './partisan/partisan.module#PartisanModule'
+  },
+  {
+    path: 'evenement',
+    loadChildren: './event/event.module#EventModule'
   }
 ];
