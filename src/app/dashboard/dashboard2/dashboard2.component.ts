@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as Chartist from 'chartist';
 import { ChartType, ChartEvent } from "ng-chartist/dist/chartist.component";
+import { environment } from '../../../environments/environment';
+import { ZoneService } from "../../webservices/zone.service";
+import { PartisanService } from "../../webservices/partisan.service";
+import { Router,RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+
+
 
 declare var require: any;
 
@@ -18,10 +24,17 @@ export interface Chart {
 @Component({
     selector: 'app-dashboard2',
     templateUrl: './dashboard2.component.html',
-    styleUrls: ['./dashboard2.component.scss']
+    styleUrls: ['./dashboard2.component.scss'],
+    providers : [ZoneService,PartisanService]
 })
 
-export class Dashboard2Component {
+export class Dashboard2Component implements OnInit {
+  partisans  : any;
+  zones  : any;
+  males : number;
+  females : number;
+  votants : number;
+
     // Line chart configuration Starts
     WidgetlineChart: Chart = {
         type: 'Line', data: data['WidgetlineChart2'],
@@ -327,7 +340,7 @@ export class Dashboard2Component {
 
     };
     // Line chart configuration Ends
-    
+
     // Line chart configuration Starts
     lineChart1: Chart = {
         type: 'Line', data: data['line1'],
@@ -352,4 +365,46 @@ export class Dashboard2Component {
         },
     };
     // Line chart configuration Ends
+
+    constructor(private router:Router,
+       private zoneService:ZoneService,
+       private partisanService:PartisanService){
+         // this.getZones();
+         this.getPartisans().then((val) => {
+             this.males = this.partisans.reduce(function(acc, cur){
+               if(cur.sexe == "M") return acc + 1;
+               return acc + 0 ;
+             },0);
+             console.log(this.males);
+             this.females = this.partisans.length - this.males;
+          });
+       }
+
+    ngOnInit(){
+      // if(this.zones && this.partisans){
+      //   this.males = this.partisans.reduce(function(acc, cur){
+      //     if(cur.sexe == "M") return 1;
+      //     return 0 ;
+      //   },0);
+      //   console.log(this.males);
+      // }
+    }
+
+    public getZones(){
+      this.zoneService.getZones().subscribe(
+        posts => { this.zones = posts; }
+    );
+  }
+
+  public getPartisans(){
+    return new Promise((resolve, reject) => {
+      this.partisanService.getPartisans().subscribe(
+        posts => {
+            this.partisans = posts;
+            this.getZones();
+            resolve();
+         }
+      );
+    });
+  }
 }

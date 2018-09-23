@@ -5,11 +5,12 @@
                 <div class="card-block pt-2 pb-0">
                     <div class="media">
                         <div class="media-body white text-left">
-                            <h3 class="font-large-1 mb-0">$15,678</h3>
-                            <span>Total Cost</span>
+                            <h3 class="font-large-1 mb-0" *ngIf='partisans'>{{partisans.length}}</h3>
+                            <span>Partisans</span>
                         </div>
                         <div class="media-right white text-right">
-                            <i class="icon-bulb font-large-1"></i>
+                            <!-- <i class="icon-bulb font-large-1"></i> -->
+                            <i class="fa fa-users font-large-2"></i>
                         </div>
                     </div>
                 </div>
@@ -22,16 +23,17 @@
         </div>
     </div>
     <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-        <div class="card bg-warning">
+        <div class="card bg-success">
             <div class="card-body">
                 <div class="card-block pt-2 pb-0">
                     <div class="media">
                         <div class="media-body white text-left">
-                            <h3 class="font-large-1 mb-0">$2156</h3>
-                            <span>Total Tax</span>
+                            <h3 class="font-large-1 mb-0">2156</h3>
+                            <span>Votants</span>
                         </div>
                         <div class="media-right white text-right">
-                            <i class="icon-pie-chart font-large-1"></i>
+                            <!-- <i class="icon-pie-chart font-large-1"></i> -->
+                            <i class="fa fa-bar-chart font-large-2"></i>
                         </div>
                     </div>
                 </div>
@@ -45,16 +47,17 @@
     </div>
 
     <div class="col-xl-3 col-lg-6 col-md-6 col-12">
-        <div class="card bg-success">
+        <div class="card bg-warning">
             <div class="card-body">
                 <div class="card-block pt-2 pb-0">
                     <div class="media">
                         <div class="media-body white text-left">
-                            <h3 class="font-large-1 mb-0">$45,668</h3>
-                            <span>Total Sales</span>
+                            <h3 class="font-large-1 mb-0">{{males}}</h3>
+                            <span>Hommes</span>
                         </div>
                         <div class="media-right white text-right">
-                            <i class="icon-graph font-large-1"></i>
+                            <!-- <i class="icon-graph font-large-1"></i> -->
+                            <i class="fa fa-male font-large-2"></i>
                         </div>
                     </div>
                 </div>
@@ -72,11 +75,12 @@
                 <div class="card-block pt-2 pb-0">
                     <div class="media">
                         <div class="media-body white text-left">
-                            <h3 class="font-large-1 mb-0">$32,454</h3>
-                            <span>Total Earning</span>
+                            <h3 class="font-large-1 mb-0">{{females}}</h3>
+                            <span>Female</span>
                         </div>
                         <div class="media-right white text-right">
-                            <i class="icon-wallet font-large-1"></i>
+                            <!-- <i class="icon-wallet font-large-1"></i> -->
+                            <i class="fa fa-female font-large-2"></i>
                         </div>
                     </div>
                 </div>
