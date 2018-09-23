@@ -18,7 +18,7 @@ import * as $ from 'jquery';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { EventComponent } from './event/event.component';
+
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { EventComponent } from './event/event.component';
         AppComponent,
         FullLayoutComponent,
         ContentLayoutComponent,
-        EventComponent,
+
     ],
     imports: [
         BrowserAnimationsModule,

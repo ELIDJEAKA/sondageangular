@@ -1,3 +1,209 @@
-<p>
-  event works!
-</p>
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+  <div class="row">
+    <div class="col-12">
+      <div class="content-header">Liste des Events</div>
+      <p class="content-sub-header">La liste de tous les events créés sur l'application</p>
+
+    </div>
+  </div>
+  <div class="row" *ngIf="events != undefined">
+    <div class="col-sm-12">
+      <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Rechercher' (keyup)='updateFilter($event)'
+      />
+      <button type="button" class="btn btn-raised btn-danger float-right" (click)="open(infoElement,content)">Ajouter un Nouveau event</button>
+
+      <ngx-datatable class="bootstrap" [rows]="rows" [loadingIndicator]="loadingIndicator" [columnMode]="'force'" [headerHeight]="50"
+        [footerHeight]="50" [rowHeight]="'auto'" [reorderable]="reorderable" [limit]="10" [sortType]="'multi'" [reorderable]="reorderable">
+        <ngx-datatable-column name="Catégorie">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['category']}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Organisateur">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div class="text-uppercase">
+              <strong>{{row['organisateur']}}</strong>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="datenaiss">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+               {{row['datenaiss']}}
+            </ng-template>
+          </ngx-datatable-column> -->
+        <ngx-datatable-column name="Description">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['description']}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Date">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['date']}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Nombre de participant">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['nb_participant']}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Statut">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['statut']}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Zone">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['zone']['name']}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Actions">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <a class="info p-0" data-original-title="" title="" #infoElement (click)="open(infoElement,content,row)">
+              <i class="ft-user font-medium-3 mr-2"></i>
+            </a>
+            <a class="danger p-0" data-original-title="" title="" #btnElement (click)="openDelete(btnElement, confirm,row)">
+              <i class="ft-x font-medium-3 mr-2"></i>
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <!-- modal details   -->
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Infos sur l'evenement </h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="form" [formGroup]="eventForm" autocomplete="off">
+        <div class="form-body">
+          <h4 class="form-section">
+            <i class="ft-info"></i> Infos </h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput1">Categorie</label>
+                <select class="form-control" name="category" formControlName="category">
+                  <option value="reunion">Reunion</option>
+                  <option value="campagne d'information">Campagne d'information</option>
+                  <option value="visite du candidat">Visite du candidat</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput2">Organisateur</label>
+                <input type="text" class="form-control border-primary" name="organisateur" formControlName="organisateur" value="{{event.organisateur}}">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput6">Statut</label>
+                <select class="form-control" name="statut" formControlName="statut">
+                  <option value="en cours">En cours</option>
+                  <option value="achévé">Achévé</option>
+                  <option value="non débuté">Non débuté</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput6">Zone</label>
+                <select class="form-control" name="zone" formControlName="zone" value="zones[0].id">
+                  <option *ngFor="let zon of zones" value="{{zon.id}}">{{zon.quartier}}</option>
+                  <!-- <option value="F">F</option> -->
+                </select>
+              </div>
+            </div>
+          </div>
+
+          
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput2">Nombre Participant</label>
+                <input type="text" class="form-control border-primary" name="nb_participant" formControlName="nb_participant" value="{{event.nb_participant}}">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput2">Date</label>
+                <input type="date" class="form-control border-primary" name="date" formControlName="date" value="{{event.date}}">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-group">
+          <label for="userinput2">Description</label>
+          <input type="text" class="form-control border-primary" name="description" formControlName="description" value="{{event.description}}">
+        </div>
+        <div class="form-actions right">
+          <button type="button" class="btn btn-raised btn-warning mr-1">
+            <i class="ft-x"></i> Annuler
+          </button>
+          <button type="button" class="btn btn-raised btn-primary" (click)="createEvent()">
+            <i class="fa fa-check-square-o"></i> Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary btn-raised" (click)="c('Close click')" id="closeform">Fermer</button>
+    </div>
+  </ng-template>
+  <!-- end modal details  -->
+
+  <!-- confirm  -->
+  <ng-template #confirm let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title text-center text-danger">{{ options.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" #btnClose>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>{{ options.message }}</p>
+       Category : {{event.category}}
+      <br/> Organisateur :{{event.organisateur}}
+      <br/> Description : {{event.description}}
+      <br/> Nombre de participations : {{event.nb_participant}}
+      <br/> Statut : {{event.statut}}
+      <br/>
+    </div>
+    <div class="modal-footer">
+      <button id="closed" type="button" class="btn btn-raised btn-primary" (click)="c('Close click')">Annuler</button>
+      <button type="button" class="btn btn-raised btn-danger" (click)="deleteEvent()">Supprimer</button>
+    </div>
+  </ng-template>
+  <!-- end confirm  -->
+
+  <!-- popup  -->
+  <ng-template #popup let-c="close" let-d="dismiss">
+    <div class="modal-header text-center">
+      <h4 class="modal-title text-center text-success">{{ info.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" #btnPopClose id="btnPopClose">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="text-center">{{ info.message }}</p>
+    </div>
+  </ng-template>
+  <!-- end popup  -->
+</section>
+<!--Basic DataTable Ends-->
