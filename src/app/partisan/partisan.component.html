@@ -81,7 +81,7 @@
   <!-- modal details   -->
   <ng-template #content let-c="close" let-d="dismiss" >
       <div class="modal-header">
-          <h4 class="modal-title">Infos sur la partisan </h4>
+          <h4 class="modal-title">Infos sur le partisan </h4>
           <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
           <span aria-hidden="true">&times;</span>
           </button>
@@ -111,6 +111,11 @@
             <div class="form-group">
               <label for="userinput2">Nom Complet</label>
               <input type="text"  class="form-control border-primary"  name="company" formControlName="fullname" value="{{partisan.fullname}}">
+            </div>
+
+            <div class="form-group">
+              <label for="datenaiss">Date de Naissance</label>
+              <input type="date"  class="form-control border-primary"  name="datenaiss" formControlName="datenaiss" defaultDate="8/8/2018" [value]="8/8/2018">
             </div>
 
             <div class="row">
