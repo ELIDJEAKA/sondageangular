@@ -127,8 +127,9 @@ export class PartisanComponent implements OnInit {
 
    // ***** modal box management *****///
    open(infoElement,content,partisan=null) {
+   console.log(partisan);
    if(!partisan){
-     partisan = {"fullname":"", "datenaiss": 0, "sexe":"M", "profession" : "", "statut":"membre simple", "lieu_residence" : "","email":"", "contact":""};
+     partisan = {"fullname":"", "datenaiss": "", "sexe":"M", "profession" : "", "statut":"membre simple", "lieu_residence" : "","email":"", "contact":""};
    }
    infoElement && infoElement.parentElement && infoElement.parentElement.parentElement &&
           infoElement.parentElement.parentElement.blur();
@@ -216,6 +217,7 @@ export class PartisanComponent implements OnInit {
            // this.staticAlertClosed = false;
            let sendPartisan = {
               "lieu_residence": this.partisanForm.value.lieu_residence,
+              "datenaiss": this.partisanForm.value.datenaiss,
               "fullname": this.partisanForm.value.fullname,
               "sexe": this.partisanForm.value.sexe,
               "zone": this.partisanForm.value.zone,
@@ -244,15 +246,16 @@ export class PartisanComponent implements OnInit {
        let sendPartisan : any =  new Object() ;
         if(this.partisan.id) sendPartisan.id = this.partisan.id;
         if(this.partisanForm.value.lieu_residence) sendPartisan.lieu_residence = this.partisanForm.value.lieu_residence;
+        if(this.partisanForm.value.lieu_residence) sendPartisan.lieu_residence = this.partisanForm.value.lieu_residence;
         if(this.partisanForm.value.fullname) sendPartisan.fullname = this.partisanForm.value.fullname;
-        if(this.partisanForm.value.lieu_residence) sendPartisan.lieu_residence = this.partisanForm.value.lieu_residence;
-        if(this.partisanForm.value.lieu_residence) sendPartisan.lieu_residence = this.partisanForm.value.lieu_residence;
+        if(this.partisanForm.value.datenaiss) sendPartisan.datenaiss = this.partisanForm.value.datenaiss;
         if(this.partisanForm.value.email) sendPartisan.email = this.partisanForm.value.email;
         if(this.partisanForm.value.contact) sendPartisan.contact = this.partisanForm.value.contact;
        this.partisanService.updatePartisan(sendPartisan).subscribe(
          (success) =>{
            // this.resetForm();
            this.loadPartisans();
+           console.log(success);
            let close = document.getElementById('closeform');
            close.click();
            this.openPopup(this.btnElement,"Modication De Partisan","Modification Bien Effectuée");

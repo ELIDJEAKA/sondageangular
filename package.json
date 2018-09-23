@@ -43,6 +43,7 @@
     "express-history-api-fallback": "^2.2.1",
     "intl": "^1.2.5",
     "jquery": "^3.2.1",
+    "moment": "^2.22.2",
     "ng-chartist": "^1.1.1",
     "ng2-charts": "^1.6.0",
     "ng2-dragula": "^1.5.0",
