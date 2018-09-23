@@ -18,6 +18,7 @@ import * as $ from 'jquery';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { EquipeComponent } from './equipe/equipe.component';
 
 
 
@@ -26,6 +27,7 @@ import { HttpModule } from '@angular/http';
         AppComponent,
         FullLayoutComponent,
         ContentLayoutComponent,
+        EquipeComponent,
 
     ],
     imports: [
