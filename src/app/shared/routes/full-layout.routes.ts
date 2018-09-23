@@ -74,5 +74,9 @@ export const Full_ROUTES: Routes = [
   {
     path: 'evenement',
     loadChildren: './event/event.module#EventModule'
+  },
+  {
+    path: 'equipe',
+    loadChildren: './equipe/equipe.module#EquipeModule'
   }
 ];

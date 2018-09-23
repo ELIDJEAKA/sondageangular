@@ -1,3 +1,186 @@
-<p>
-  equipe works!
-</p>
+<!--Basic DataTable Starts-->
+<section id="basic-datatable" class="mb-3">
+  <div class="row">
+    <div class="col-12">
+      <div class="content-header">Liste des Equipes</div>
+      <p class="content-sub-header">La liste de tous les equipes créés sur l'application</p>
+
+    </div>
+  </div>
+  <div class="row" *ngIf="equipes != undefined">
+    <div class="col-sm-12">
+      <input type='text' style='padding:8px;margin:15px auto;width:30%;' placeholder='Rechercher' (keyup)='updateFilter($equipe)'
+      />
+      <button type="button" class="btn btn-raised btn-danger float-right" (click)="open(infoElement,content)">Ajouter une nouvelle equipe</button>
+
+      <ngx-datatable class="bootstrap" [rows]="rows" [loadingIndicator]="loadingIndicator" [columnMode]="'force'" [headerHeight]="50"
+        [footerHeight]="50" [rowHeight]="'auto'" [reorderable]="reorderable" [limit]="10" [sortType]="'multi'" [reorderable]="reorderable">
+        <ngx-datatable-column name="Nom de l'équipe">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['name']}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Membre">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <div class="text-uppercase">
+              <strong>{{row['membre']}}</strong>
+            </div>
+          </ng-template>
+        </ngx-datatable-column>
+        <!-- <ngx-datatable-column name="datenaiss">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+               {{row['datenaiss']}}
+            </ng-template>
+          </ngx-datatable-column> -->
+        <ngx-datatable-column name="Fonction">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['fonction']}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Contact">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['contact']}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Zone">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            {{row['zone']}}
+          </ng-template>
+        </ngx-datatable-column>
+
+        <ngx-datatable-column name="Actions">
+          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+            <a class="info p-0" data-original-title="" title="" #infoElement (click)="open(infoElement,content,row)">
+              <i class="ft-user font-medium-3 mr-2"></i>
+            </a>
+            <a class="danger p-0" data-original-title="" title="" #btnElement (click)="openDelete(btnElement, confirm,row)">
+              <i class="ft-x font-medium-3 mr-2"></i>
+            </a>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </div>
+  </div>
+</section>
+
+
+
+<section>
+  <!-- modal details   -->
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Infos sur l'evenement </h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form class="form" [formGroup]="equipeForm" autocomplete="off">
+        <div class="form-body">
+          <h4 class="form-section">
+            <i class="ft-info"></i> Infos </h4>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput1">Nom de l'équipe</label>
+                <input type="text" class="form-control border-primary" name="name" formControlName="name" value="{{equipe.name}}">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput2">Membre</label>
+                <input type="text" class="form-control border-primary" name="membre" formControlName="membre" value="{{equipe.membre}}">
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput6">Fonction</label>
+                <select class="form-control" name="statut" formControlName="statut">
+                  <option value="coordinateur">Coordinateur</option>
+                  <option value="chef de zone">Chef de zone</option>
+                  <option value="animateur">Animateur</option>
+                  <option value="militant">Militant</option>
+                  <option value="agent de terrain">Agent de terrain</option>
+                  <option value="benevole">Benevole</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput6">Zone</label>
+                <select class="form-control" name="zone" formControlName="zone" value="zones[0].id">
+                  <option *ngFor="let zon of zones" value="{{zon.id}}">{{zon.quartier}}</option>
+                  <!-- <option value="F">F</option> -->
+                </select>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label for="userinput2">Contact</label>
+                <input type="text" class="form-control border-primary" name="contact" formControlName="contact" value="{{equipe.contact}}">
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="form-actions right">
+          <button type="button" class="btn btn-raised btn-warning mr-1">
+            <i class="ft-x"></i> Annuler
+          </button>
+          <button type="button" class="btn btn-raised btn-primary" (click)="createEquipe()">
+            <i class="fa fa-check-square-o"></i> Enregistrer
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary btn-raised" (click)="c('Close click')" id="closeform">Fermer</button>
+    </div>
+  </ng-template>
+  <!-- end modal details  -->
+
+  <!-- confirm  -->
+  <ng-template #confirm let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title text-center text-danger">{{ options.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" #btnClose>
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p>{{ options.message }}</p>
+      Nom de l'equipe : {{equipe.name}}
+      <br/> Membre :{{equipe.membre}}
+      <br/> Fonction : {{equipe.fonction}}
+      <br/> Contact : {{equipe.contact}}
+      <br/> Zone : {{equipe.zone.name}}
+      <br/>
+    </div>
+    <div class="modal-footer">
+      <button id="closed" type="button" class="btn btn-raised btn-primary" (click)="c('Close click')">Annuler</button>
+      <button type="button" class="btn btn-raised btn-danger" (click)="deleteEquipe()">Supprimer</button>
+    </div>
+  </ng-template>
+  <!-- end confirm  -->
+
+  <!-- popup  -->
+  <ng-template #popup let-c="close" let-d="dismiss">
+    <div class="modal-header text-center">
+      <h4 class="modal-title text-center text-success">{{ info.title}}</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" #btnPopClose id="btnPopClose">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <p class="text-center">{{ info.message }}</p>
+    </div>
+  </ng-template>
+  <!-- end popup  -->
+</section>
+<!--Basic DataTable Ends-->

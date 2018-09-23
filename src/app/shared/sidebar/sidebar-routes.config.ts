@@ -12,6 +12,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/zone', title: 'Zones', icon: 'fa fa-map-marker', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     { path: '/partisan', title: 'Partisans', icon: 'fa fa-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     { path: '/evenement', title: 'Evenements', icon: 'fa fa-calendar', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+    { path: '/equipe', title: 'Equipe', icon: 'fa fa-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/colorpalettes', title: 'Color Palette', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/inbox', title: 'Inbox', icon: 'ft-mail', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/chat', title: 'Chat', icon: 'ft-message-square', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
