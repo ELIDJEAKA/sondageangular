@@ -78,5 +78,9 @@ export const Full_ROUTES: Routes = [
   {
     path: 'equipe',
     loadChildren: './equipe/equipe.module#EquipeModule'
+  },
+  {
+    path: 'simulateur',
+    loadChildren: './simulateur/simulateur.module#SimulateurModule'
   }
 ];

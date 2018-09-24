@@ -1,6 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import * as Chartist from 'chartist';
 import { ChartType, ChartEvent } from "ng-chartist/dist/chartist.component";
+
+import { environment } from '../../../environments/environment';
+import { ZoneService } from "../../webservices/zone.service";
+import { PartisanService } from "../../webservices/partisan.service";
+import { EventService } from "../../webservices/event.service";
+import { Router,RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
 declare var require: any;
 
@@ -17,10 +23,38 @@ export interface Chart {
 @Component({
     selector: 'app-dashboard1',
     templateUrl: './dashboard1.component.html',
-    styleUrls: ['./dashboard1.component.scss']
+    styleUrls: ['./dashboard1.component.scss'],
+    providers : [ZoneService,PartisanService,EventService]
+
 })
 
-export class Dashboard1Component {
+export class Dashboard1Component implements OnInit {
+    partisans  : any;
+    zones  : any;
+    events  : any;
+    males : number;
+    females : number;
+    votants : number;
+    danielData =  {
+      "series": [
+        {
+          "name": "done",
+          "value": 23
+        },
+        {
+          "name": "progress",
+          "value": 14
+        },
+        {
+          "name": "outstanding",
+          "value": 35
+        },
+        {
+          "name": "started",
+          "value": 28
+        }
+      ]
+    };
 
     // Line area chart configuration Starts
     lineArea: Chart = {
@@ -141,7 +175,7 @@ export class Dashboard1Component {
             axisY: {
                 low: 0,
                 scaleMinSpace: 50,
-            }            
+            }
         },
         responsiveOptions: [
             ['screen and (max-width: 640px) and (min-width: 381px)', {
@@ -258,14 +292,16 @@ export class Dashboard1Component {
     // Line chart configuration Ends
 
     // Donut chart configuration Starts
+
+    // data['donutDashboard']
     DonutChart: Chart = {
         type: 'Pie',
-        data: data['donutDashboard'],
+        data: this.danielData,
         options: {
             donut: true,
             startAngle: 0,
             labelInterpolationFnc: function (value) {
-                var total = data['donutDashboard'].series.reduce(function (prev, series) {
+                var total = this.danielData.series.reduce(function (prev, series) {
                     return prev + series.value;
                 }, 0);
                 return total + '%';
@@ -410,4 +446,46 @@ export class Dashboard1Component {
     };
     // Line chart configuration Ends
 
+    constructor(private router:Router,
+       private zoneService:ZoneService,
+       private partisanService:PartisanService,
+       private eventService:EventService){
+         // this.getZones();
+         this.getPartisans().then((val) => {
+             this.males = this.partisans.reduce(function(acc, cur){
+               if(cur.sexe == "M") return acc + 1;
+               return acc + 0 ;
+             },0);
+             console.log(this.males);
+             this.females = this.partisans.length - this.males;
+          });
+       }
+    ngOnInit(){}
+
+    public getZones(){
+      this.zoneService.getZones().subscribe(
+        posts => { this.zones = posts; }
+    );
+  }
+    public getEvents(){
+      this.eventService.getEvents().subscribe(
+        posts => { this.events = posts; }
+    );
+  }
+
+  public getPartisans(){
+    return new Promise((resolve, reject) => {
+      this.partisanService.getPartisans().subscribe(
+        posts => {
+            this.partisans = posts;
+            this.getZones();
+            this.getEvents();
+            resolve();
+         }
+      );
+    });
+  }
+  public goUserDashboard(){
+    this.router.navigate(['dashboard/dashboard2']);
+  }
 }

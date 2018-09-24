@@ -10,6 +10,10 @@ import { Http, Response } from '@angular/http';
 import { ZoneService } from "../webservices/zone.service"
 import { PartisanService } from "../webservices/partisan.service"
 
+import * as moment from 'moment';
+import { NgbDateStruct, NgbDatepickerI18n, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
+
+
 declare var require: any;
 var data: any = require('../shared/data/company.json');
 @Component({
@@ -48,9 +52,15 @@ export class PartisanComponent implements OnInit {
   ];
   submitted :any;
   partisanForm: FormGroup;
+  navigation = 'select';
+  model: NgbDateStruct;
+  today = moment();
+  // date: {year: number, month: number , day: number};
+  date: {year: 2018, month: 2 , day: 12};
   @ViewChild(DatatableComponent) table: DatatableComponent;
   @ViewChild('popup') popup: ElementRef;
   @ViewChild('btnElement') btnElement: ElementRef;
+  @ViewChild('dp') dp: ElementRef;
 
 
   constructor(private router:Router,
@@ -66,7 +76,7 @@ export class PartisanComponent implements OnInit {
      this.partisanForm = new FormGroup({
        fullname: new FormControl('',[Validators.required]),
        lieu_residence: new FormControl('',[Validators.required]),
-       datenaiss: new FormControl(''),
+       datenaiss: new FormControl(null),
        sexe: new FormControl('M'),
        profession: new FormControl(''),
        zone: new FormControl(''),
@@ -133,6 +143,25 @@ export class PartisanComponent implements OnInit {
    }
    infoElement && infoElement.parentElement && infoElement.parentElement.parentElement &&
           infoElement.parentElement.parentElement.blur();
+      // partisan.datenaiss = "08/08/2018";
+      // partisan.datenaiss = moment(partisan.datenaiss).locale('fr').format('LL');
+      // partisan.datenaiss = moment(partisan.datenaiss).format('MM/DD/YYYY');
+      let dt = moment(partisan.datenaiss);
+      console.log(dt);
+      // this.partisanForm.get('datenaiss').setValue({
+      //     year: parseInt(dt.format('YYYY'), 10),
+      //     month: parseInt(dt.format('M'), 10),
+      //     day: parseInt(dt.format('D'), 10)
+      //   });
+        // console.log(dt);
+       // this.date.day = dt.day;
+       // this.date.year = dt.year;
+       // this.date.month = dt.month();
+       // this.date.month = 2;
+       this.model = {year:dt.year(), month:dt.month(), day: dt.day()};
+       this.today = dt;
+       console.log(this.model);
+       // this.dp.navigateTo({year:2018, month:2, day: 12});
        this.partisan = partisan;
        this.modalService.open(content,{ windowClass: 'myCustomModalClass'}).result.then((result) => {
            this.closeResult = `Closed with: ${result}`;

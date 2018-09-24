@@ -1,12 +1,13 @@
 <!--Statistics cards Starts-->
 <div class="row">
-	<div class="col-xl-3 col-lg-6 col-md-6 col-12">
+	<div class="col-xl-3 col-lg-6 col-md-6 col-12" (click)="goUserDashboard()">
 		<div class="card gradient-blackberry">
 			<div class="card-body">
 				<div class="card-block pt-2 pb-0">
 					<div class="media">
 						<div class="media-body white text-left">
-							<h3 class="font-large-1 mb-0">12156</h3>
+
+							<h3 class="font-large-1 mb-0" *ngIf="partisans">{{partisans.length}} <i class="fa fa-arrow-circle-up font-large-2"></i></h3>
 							<span>Partisans</span>
 						</div>
 						<div class="media-right white text-right">
@@ -28,7 +29,7 @@
 				<div class="card-block pt-2 pb-0">
 					<div class="media">
 						<div class="media-body white text-left">
-							<h3 class="font-large-1 mb-0">1567</h3>
+							<h3 class="font-large-1 mb-0">1</h3>
 							<span>Sondage</span>
 						</div>
 						<div class="media-right white text-right">
@@ -52,7 +53,7 @@
 				<div class="card-block pt-2 pb-0">
 					<div class="media">
 						<div class="media-body white text-left">
-							<h3 class="font-large-1 mb-0">45</h3>
+							<h3 class="font-large-1 mb-0" *ngIf="zones">{{zones.length}}</h3>
 							<span>Zones</span>
 						</div>
 						<div class="media-right white text-right">
@@ -74,7 +75,7 @@
 				<div class="card-block pt-2 pb-0">
 					<div class="media">
 						<div class="media-body white text-left">
-							<h3 class="font-large-1 mb-0">8695</h3>
+							<h3 class="font-large-1 mb-0" *ngIf="events">{{events.length}}</h3>
 							<span>Evenements</span>
 						</div>
 						<div class="media-right white text-right">
@@ -403,7 +404,7 @@
 			<div class="card-body">
 
 				<p class="font-medium-2 text-muted text-center">Project Tasks</p>
-				<div id="donut-dashboard-chart" class="height-250 donut">
+				<div id="donut-dashboard-chart" class="height-250 donut" *ngIf="danielData">
 					<x-chartist class="" [data]="DonutChart.data" [type]="DonutChart.type" [options]="DonutChart.options" [responsiveOptions]="DonutChart.responsiveOptions"
 					 [events]="DonutChart.events">
 					</x-chartist>

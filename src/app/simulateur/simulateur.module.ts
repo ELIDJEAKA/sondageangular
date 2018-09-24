@@ -5,9 +5,9 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 
-import { PartisanRoutingModule } from "./partisan-routing.module";
+import { SimulateurRoutingModule } from "./simulateur-routing.module";
 
-import { PartisanComponent } from "./partisan.component";
+import { SimulateurComponent } from "./simulateur.component";
 
 
 
@@ -15,14 +15,14 @@ import { PartisanComponent } from "./partisan.component";
 @NgModule({
     imports: [
         CommonModule,
-        PartisanRoutingModule,
+        SimulateurRoutingModule,
         FormsModule,
         ReactiveFormsModule,
         NgxDatatableModule,
         NgbModule,
     ],
     declarations: [
-      PartisanComponent
+      SimulateurComponent
     ]
 })
-export class PartisanModule { }
+export class SimulateurModule { }
