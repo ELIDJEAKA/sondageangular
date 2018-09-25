@@ -23,26 +23,40 @@
                                 <tr>
                                     <th scope="row">1</th>
                                     <td> Hamed Bakayoko  </td>
-                                    <td><img class="img-fluid img-rounded" src="assets/img/candidats/hambak.jpg" alt="" height="150" width="150" style="margin : 0 auto;"></td>
+                                    <td><img class="img-fluid rounded-circle" src="assets/img/candidats/hambak.jpg" alt="" height="150" width="150" style="margin : 0 auto;"></td>
                                     <td> <span class="badge badge-success">RDR</span> </td>
                                     <td><img class="img-fluid img-rounded" src="assets/img/candidats/rdr.png" alt="" height="50" width="50" style="margin : 0 auto;"></td>
-                                    <td>@vote</td>
+                                    <td>
+                                      @vote <br/>
+                                      <img src="assets/img/svg/X_mark.svg" alt="" style="height:75px;width:75px;" (click)="vote(1,1)">
+                                      <img src="assets/img/candidats/plus.png" alt="" style="height:75px;width:75px;" (click)="vote(1,2)">
+                                      <img src="assets/img/candidats/moins.png" alt="" style="height:75px;width:75px;" (click)="vote(1,2)">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">2</th>
-                                    <td>Koné Tefkour</td>
-                                    <td><img class="img-fluid img-rounded" src="assets/img/candidats/tefkour.jpg" alt="" height="150" width="150" style="margin : 0 auto;"></td>
+                                    <td>Koné Tehfour</td>
+                                    <td><img class="img-fluid rounded-circle" src="assets/img/candidats/tefkour.jpeg" alt="" height="150" width="150" style="margin : 0 auto;"></td>
                                     <td><span class="badge badge-success">UJS</span></td>
                                     <td><img class="img-fluid img-rounded" src="assets/img/candidats/ujs.jpg" alt="" height="50" width="50" style="margin : 0 auto;"></td>
-                                    <td>@vote</td>
+                                    <td>
+                                      @vote <br/>
+                                      <img src="assets/img/svg/X_mark.svg" alt="" style="height:75px;width:75px;" (click)="vote(2,3)">
+                                      <img src="assets/img/candidats/plus.png" alt="" style="height:75px;width:75px;" (click)="vote(2,3)">
+                                      <img src="assets/img/candidats/moins.png" alt="" style="height:75px;width:75px;" (click)="vote(2,3)">
+                                    </td>
                                 </tr>
                                 <tr>
                                     <th scope="row">3</th>
                                     <td>Coulibaly Zonzerigue</td>
-                                    <td><img class="img-fluid img-rounded" src="assets/img/candidats/coul.jpg" alt="" height="150" width="150" style="margin : 0 auto;"></td>
+                                    <td><img class="img-fluid rounded-circle" src="assets/img/candidats/coul.jpg" alt="" height="150" width="150" style="margin : 0 auto;"></td>
                                     <td><span class="badge badge-success">candidat independant</span></td>
                                     <td>@Freedom</td>
-                                    <td>@vote</td>
+                                    <td>
+                                      @vote <br/>
+                                      <img src="assets/img/svg/X_mark.svg" alt="" style="height:75px;width:75px;" (click)="vote(3,3)">
+                                      <img src="assets/img/candidats/plus.png" alt="" style="height:75px;width:75px;" (click)="vote(3,3)">
+                                      <img src="assets/img/candidats/moins.png" alt="" style="height:75px;width:75px;" (click)="vote(3,3)">                                    </td>
                                 </tr>
                             </tbody>
                         </table>

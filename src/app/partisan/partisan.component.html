@@ -62,6 +62,9 @@
           </ngx-datatable-column>
           <ngx-datatable-column name="Actions">
             <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <a class="warning p-0" data-original-title="" title="" #printcard (click)="open(printcard,usercard,row)">
+                  <i class="fa fa-address-card font-medium-3 mr-2"></i>
+              </a>
               <a class="info p-0" data-original-title="" title="" #infoElement (click)="open(infoElement,content,row)">
                   <i class="ft-user font-medium-3 mr-2"></i>
               </a>
@@ -233,5 +236,91 @@
     </div>
   </ng-template>
   <!-- end popup  -->
+
+
+  <!-- usercard  -->
+  <ng-template #usercard let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title text-center text-danger">Carte De Membre</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')" #btnClose >
+      <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <!-- <p>{{ options.message }}</p>
+      Nom et Prenom Partisan :  {{partisan.fullname}}    <br/>
+      Profession :{{partisan.profession}}    <br/>
+      Sexe  : {{partisan.sexe}}  <br/> -->
+            <div class="container">
+            <div class="row">
+            <div class="col-md-5  toppad  pull-right col-md-offset-3 ">
+                 <!-- <A href="edit.html" >Edit Profile</A> -->
+
+              <!-- <A href="edit.html" >Logout</A> -->
+                <!-- <img alt="User Pic" src="assets/img/candidats/coul.jpg" class="img-circle rounded-circle img-responsive" height="150" width="150"> -->
+                <img alt="User Pic" src="https://randomuser.me/api/portraits/men/{{partisan.id}}.jpg" class="img-circle rounded-circle img-responsive" height="150" width="150">
+                   <br>
+            <p class=" text-info">{{partisan.fullname}} </p>
+            </div>
+              <!-- <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" > -->
+
+
+                <div class="panel panel-info">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Partisan</h3>
+                  </div>
+                  <div class="panel-body">
+                    <!-- <div class="row"> -->
+                      <!-- <div class="col-md-9 col-lg-9 " align="center"> <img alt="User Pic" src="assets/img/candidats/coul.jpg" class="img-circle rounded-circle img-responsive" height="150" width="150"> </div> -->
+                      <!-- <div class=" col-md-9 col-lg-9 "> -->
+                        <table class="table table-user-information">
+                          <tbody>
+                            <tr>
+                              <td>Profession:</td>
+                              <td>{{partisan.fullname}}</td>
+                            </tr>
+                            <!-- <tr>
+                              <td>Hire date:</td>
+                              <td>06/23/2013</td>
+                            </tr> -->
+                            <tr>
+                              <td>Date de naissance</td>
+                              <td>{{partisan.datenaiss}}</td>
+                            </tr>
+                              <tr>
+                              <td>Lieu de résidence</td>
+                              <td>{{partisan.lieu_residence}}</td>
+                            </tr>
+                            <tr>
+                              <td>Telephone</td>
+                              <td>{{partisan.contact}}
+                                <!-- <br><br>555-4567-890(Mobile) -->
+                              </td>
+
+                            </tr>
+                            <tr>
+                              <td>Email</td>
+                              <td><a href="mailto:info@support.com">{{partisan.email}}</a></td>
+                            </tr>
+
+                          </tbody>
+                        </table>
+
+                      <!-- </div> -->
+                    <!-- </div> -->
+                  </div>
+                </div>
+              <!-- </div> -->
+            </div>
+          </div>
+
+
+    </div>
+    <!-- <div class="modal-footer">
+      <button id="closed" type="button" class="btn btn-raised btn-primary" (click)="c('Close click')" >Annuler</button>
+      <button type="button" class="btn btn-raised btn-danger"  (click)="deletePartisan()">Supprimer</button>
+    </div> -->
+  </ng-template>
+  <!-- end usercard  -->
 </section>
 <!--Basic DataTable Ends-->
