@@ -22,7 +22,7 @@ export var barChartColorScheme = {
 export var pieChartView: any[] = [550, 400];
 
 // options
-export var pieChartShowLegend = false;
+export var pieChartShowLegend = true;
 
 export var pieChartColorScheme = {
     domain: ['#009DA0', '#FF8D60', '#FF586B', '#AAAAAA']

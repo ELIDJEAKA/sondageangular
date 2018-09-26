@@ -296,12 +296,12 @@ export class Dashboard1Component implements OnInit {
     // data['donutDashboard']
     DonutChart: Chart = {
         type: 'Pie',
-        data: this.danielData,
+        data: data['donutDashboard'],
         options: {
             donut: true,
             startAngle: 0,
             labelInterpolationFnc: function (value) {
-                var total = this.danielData.series.reduce(function (prev, series) {
+                var total = data['donutDashboard'].series.reduce(function (prev, series) {
                     return prev + series.value;
                 }, 0);
                 return total + '%';

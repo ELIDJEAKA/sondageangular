@@ -209,7 +209,7 @@ export var lineChartMulti = [
       {
         "name": "2013",
         "value": 750
-      },      
+      },
       {
         "name": "2014",
         "value": 850
@@ -217,7 +217,7 @@ export var lineChartMulti = [
       {
         "name": "2015",
         "value": 875
-      },      
+      },
       {
         "name": "2016",
         "value": 730
@@ -243,7 +243,7 @@ export var lineChartMulti = [
       {
         "name": "2013",
         "value": 675
-      },      
+      },
       {
         "name": "2014",
         "value": 700
@@ -251,7 +251,7 @@ export var lineChartMulti = [
       {
         "name": "2015",
         "value": 680
-      },      
+      },
       {
         "name": "2016",
         "value": 690
@@ -330,7 +330,7 @@ export var areaChartMulti = [
       {
         "name": "2013",
         "value": 750
-      },      
+      },
       {
         "name": "2014",
         "value": 850
@@ -338,7 +338,7 @@ export var areaChartMulti = [
       {
         "name": "2015",
         "value": 875
-      },      
+      },
       {
         "name": "2016",
         "value": 730
@@ -346,4 +346,3 @@ export var areaChartMulti = [
     ]
   },
 ];
-

@@ -6,6 +6,11 @@ import { ZoneService } from "../../webservices/zone.service";
 import { PartisanService } from "../../webservices/partisan.service";
 import { Router,RouterModule, CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 
+import { barChartSingle, barChartmulti, pieChartSingle, pieChartmulti, lineChartSingle, lineChartMulti, areaChartSingle, areaChartMulti } from '../../shared/data/ngxChart';
+import * as chartsData from '../../shared/configs/ngx-charts.config';
+
+import { ErreurService } from "../../webservices/erreur.service"
+
 
 
 declare var require: any;
@@ -25,10 +30,94 @@ export interface Chart {
     selector: 'app-dashboard2',
     templateUrl: './dashboard2.component.html',
     styleUrls: ['./dashboard2.component.scss'],
-    providers : [ZoneService,PartisanService]
+    providers : [ZoneService,PartisanService,ErreurService]
 })
 
 export class Dashboard2Component implements OnInit {
+  // Charts
+      erreur : any;
+
+      //Chart Data
+      lineChartMulti = lineChartMulti;
+      areaChartMulti = areaChartMulti;
+      barChartmulti = barChartmulti;
+      pieChartSingle = pieChartSingle;
+
+      //Bar Charts
+      barChartView: any[] = chartsData.barChartView;
+
+      // options
+      barChartShowYAxis = chartsData.barChartShowYAxis;
+      barChartShowXAxis = chartsData.barChartShowXAxis;
+      barChartGradient = chartsData.barChartGradient;
+      barChartShowLegend = chartsData.barChartShowLegend;
+      barChartShowXAxisLabel = chartsData.barChartShowXAxisLabel;
+      barChartXAxisLabel = chartsData.barChartXAxisLabel;
+      barChartShowYAxisLabel = chartsData.barChartShowYAxisLabel;
+      barChartYAxisLabel = chartsData.barChartYAxisLabel;
+      barChartColorScheme = chartsData.barChartColorScheme;
+
+      //Pie Charts
+
+      pieChartView: any[] = chartsData.pieChartView;
+
+      // options
+      pieChartShowLegend = chartsData.pieChartShowLegend;
+
+      pieChartColorScheme = chartsData.pieChartColorScheme;
+
+      // pie
+      pieChartShowLabels = chartsData.pieChartShowLabels;
+      pieChartExplodeSlices = chartsData.pieChartExplodeSlices;
+      pieChartDoughnut = chartsData.pieChartDoughnut;
+      pieChartGradient = chartsData.pieChartGradient;
+
+      pieChart1ExplodeSlices = chartsData.pieChart1ExplodeSlices;
+      pieChart1Doughnut = chartsData.pieChart1Doughnut;
+
+
+      //Line Charts
+
+      lineChartView: any[] = chartsData.lineChartView;
+
+      // options
+      lineChartShowXAxis = chartsData.lineChartShowXAxis;
+      lineChartShowYAxis = chartsData.lineChartShowYAxis;
+      lineChartGradient = chartsData.lineChartGradient;
+      lineChartShowLegend = chartsData.lineChartShowLegend;
+      lineChartShowXAxisLabel = chartsData.lineChartShowXAxisLabel;
+      lineChartXAxisLabel = chartsData.lineChartXAxisLabel;
+      lineChartShowYAxisLabel = chartsData.lineChartShowYAxisLabel;
+      lineChartYAxisLabel = chartsData.lineChartYAxisLabel;
+
+      lineChartColorScheme = chartsData.lineChartColorScheme;
+
+      // line, area
+      lineChartAutoScale = chartsData.lineChartAutoScale;
+      lineChartLineInterpolation = chartsData.lineChartLineInterpolation;
+
+      //Area Charts
+
+      areaChartView = chartsData.areaChartView;
+
+      // options
+      areaChartShowXAxis = chartsData.areaChartShowXAxis;
+      areaChartShowYAxis = chartsData.areaChartShowYAxis;
+      areaChartGradient = chartsData.areaChartGradient;
+      areaChartShowLegend = chartsData.areaChartShowLegend;
+      areaChartShowXAxisLabel = chartsData.areaChartShowXAxisLabel;
+      areaChartXAxisLabel = chartsData.areaChartXAxisLabel;
+      areaChartShowYAxisLabel = chartsData.areaChartShowYAxisLabel;
+      areaChartYAxisLabel = chartsData.areaChartYAxisLabel;
+
+      areaChartColorScheme = chartsData.areaChartColorScheme;
+
+      // line, area
+      areaChartAutoScale = chartsData.areaChartAutoScale;
+      areaChartLineInterpolation = chartsData.areaChartLineInterpolation;
+
+
+      // end charts
   partisans  : any;
   zones  : any;
   males : number;
@@ -368,7 +457,10 @@ export class Dashboard2Component implements OnInit {
 
     constructor(private router:Router,
        private zoneService:ZoneService,
-       private partisanService:PartisanService){
+       private partisanService:PartisanService,
+       private erreurService:ErreurService,
+     ){
+         Object.assign(this, { barChartSingle, barChartmulti, pieChartSingle, pieChartmulti, lineChartSingle, lineChartMulti, areaChartSingle, areaChartMulti })
          // this.getZones();
          this.getPartisans().then((val) => {
              this.males = this.partisans.reduce(function(acc, cur){
@@ -378,6 +470,27 @@ export class Dashboard2Component implements OnInit {
              console.log(this.males);
              this.females = this.partisans.length - this.males;
           });
+          // let self = this;
+          // this.erreurService.getErreurs(){
+          //
+          // }
+          // setTimeout(function(){
+          //   self.erreur = [
+          //     {
+          //       "name": "Armenia",
+          //       "value": 894
+          //     },
+          //     {
+          //       "name": "USA",
+          //       "value": 500
+          //     },
+          //     {
+          //       "name": "France",
+          //       "value": 720
+          //     }
+          //   ];
+          // }, 3500);
+          this.getErreurs();
        }
 
     ngOnInit(){
@@ -393,6 +506,18 @@ export class Dashboard2Component implements OnInit {
     public getZones(){
       this.zoneService.getZones().subscribe(
         posts => { this.zones = posts; }
+    );
+  }
+  public getErreurs(){
+    this.erreurService.getErreurs().subscribe(
+      posts => {
+        let res : any = [];
+        posts.forEach(function(elt){
+          res.push({"name": elt.name, "value": elt.nombre});
+        });
+        console.log(res);
+        this.erreur = res;
+      }
     );
   }
 

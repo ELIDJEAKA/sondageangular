@@ -9,6 +9,9 @@ import { MatchHeightModule } from "../shared/directives/match-height.directive";
 import { Dashboard1Component } from "./dashboard1/dashboard1.component";
 import { Dashboard2Component } from "./dashboard2/dashboard2.component";
 
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+
+
 
 @NgModule({
     imports: [
@@ -16,7 +19,8 @@ import { Dashboard2Component } from "./dashboard2/dashboard2.component";
         DashboardRoutingModule,
         ChartistModule,
         NgbModule,
-        MatchHeightModule
+        MatchHeightModule,
+        NgxChartsModule
     ],
     exports: [],
     declarations: [
