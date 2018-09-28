@@ -43,6 +43,13 @@ export class SondageformComponent implements OnInit {
   securite = false;
   corruption = false;
 
+  // contre
+  nabobo = false;
+  nterrain = false;
+  ngestion = false;
+  cposte = false;
+  pcompten = false;
+
   sondage : any = [];
   pointfort : any = [];
   axeamelioration : any = [];
@@ -65,7 +72,7 @@ export class SondageformComponent implements OnInit {
     this.qcandidat = false;
     let self = this;
     this.sondage.push({"code":1, "name":"pour"});
-    this.sondage.push({"code":2, "name":"carte"});
+    // this.sondage.push({"code":2, "name":"carte"});
     setTimeout(function(){
       // self.qvote = true;
       self.qfort = true;
@@ -75,8 +82,8 @@ export class SondageformComponent implements OnInit {
   isNotYourCandidatReponse(){
     this.qcandidat = false;
     let self = this;
-    this.sondage.push({"code":1, "name":"contre"});
-    this.sondage.push({"code":2, "name":"carte"});
+    this.sondage.push({"code":3, "name":"contre"});
+    // this.sondage.push({"code":2, "name":"carte"});
     setTimeout(function(){
       // self.qvote = true;
       self.qcontre = true;
@@ -106,7 +113,15 @@ export class SondageformComponent implements OnInit {
     if(this.amesoci)   this.topic.push({"code":4, "name":"securite"})
     if(this.ameacce)  this.topic.push({"code":5, "name":"corruption"})
 
-    let res = {"sondage":this.sondage ,"pointfort":this.pointfort, "topic":this.topic, "axeamelioration":this.axeamelioration};
+    // managing contre
+    if(this.nabobo)  this.contre.push({"code":1, "name":"Non natif d'abobo"})
+    if(this.nterrain)  this.contre.push({"code":2, "name":"Méconnaissance du terrain"})
+    if(this.ngestion)  this.contre.push({"code":3, "name":"Mauvaise gestion"})
+    if(this.cposte)   this.contre.push({"code":4, "name":"cumul de poste"})
+    if(this.pcompten)  this.contre.push({"code":5, "name":"Pas compétent"})
+
+
+    let res = {"sondage":this.sondage ,"pointfort":this.pointfort, "topic":this.topic, "axeamelioration":this.axeamelioration, "contre":this.contre};
 
     this.sondageService.createSondage(res).subscribe(
     (success) =>{
@@ -148,6 +163,12 @@ export class SondageformComponent implements OnInit {
     this.education = false;
     this.securite = false;
     this.corruption = false;
+
+    this.nabobo = false;
+    this.nterrain = false;
+    this.ngestion = false;
+    this.cposte = false;
+    this.pcompten = false;
 
     this.sondage = [];
     this.pointfort = [];

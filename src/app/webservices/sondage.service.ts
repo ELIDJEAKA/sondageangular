@@ -22,8 +22,10 @@ export class SondageService {
     getSondageByQuestion(question){
       var url = this.apiurl+'sondage/'+question;
 
+      // return this.http
+      //     .get(this.apiurl+'sondage/'+question).map((res:Response) => res.json());
       return this.http
-          .get(this.apiurl+'sondage/'+question).map((res:Response) => res.json());
+          .get(this.apiurl+''+question).map((res:Response) => res.json());
     }
 
     createSondage(sondage:any){

@@ -1,3 +1,121 @@
-<p>
-  sondagestats works!
-</p>
+<!-- <div class="row">
+  <div class="col-md-12">
+    <div class="card" *ngIf="erreur">
+        <div class="card-header">
+          <h4 class="card-title">Simulateur De Vote</h4>
+        </div>
+        <div class="card-body">
+          <div class="card-block">
+            <div id="pie-chart1" class="height-400">
+              <ngx-charts-pie-chart [scheme]="pieChartColorScheme" [results]="erreur" [legend]="pieChartShowLegend" [explodeSlices]="pieChartExplodeSlices"
+              [labels]="pieChartShowLabels" [doughnut]="pieChartDoughnut" [gradient]="pieChartGradient" (select)="onSelect($event)">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card" *ngIf="simulateur">
+            <div class="card-header">
+                <h4 class="card-title">Statistique des votes</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="horizontal-bar-chart" class="height-400">
+                        <ngx-charts-bar-horizontal [scheme]="barChartColorScheme" [results]="simulateur" [gradient]="barChartGradient" [xAxis]="barChartShowXAxis"
+                            [yAxis]="barChartShowYAxis" [legend]="barChartShowLegend" [showXAxisLabel]="barChartShowXAxisLabel"
+                            [showYAxisLabel]="barChartShowYAxisLabel" [xAxisLabel]="barChartXAxisLabel"  [yAxisLabel]="'Candidats'"
+                            (select)="onSelect($event)">
+                        </ngx-charts-bar-horizontal>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" *ngIf="contre">
+      <div class="card-header">
+        <!-- <h4 class="card-title">Sondage</h4> -->
+        <h4 class="card-title">Sondage contre</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <div id="pie-chart1" class="height-400">
+            <!-- pieChartSingle -->
+            <ngx-charts-pie-chart [scheme]="pieChartColorScheme" [results]="contre" [legend]="pieChartShowLegend" [explodeSlices]="pieChartExplodeSlices"
+            [labels]="pieChartShowLabels" [doughnut]="pieChartDoughnut" [gradient]="pieChartGradient" (select)="onSelect($event)">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" *ngIf="pointfort">
+      <div class="card-header">
+        <!-- <h4 class="card-title">Sondage</h4> -->
+        <h4 class="card-title">Points forts de la personnalité</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <div id="pie-chart1" class="height-400">
+            <!-- pieChartSingle -->
+            <ngx-charts-pie-chart [scheme]="pieChartColorScheme" [results]="pointfort" [legend]="pieChartShowLegend" [explodeSlices]="pieChartExplodeSlices"
+            [labels]="pieChartShowLabels" [doughnut]="pieChartDoughnut" [gradient]="pieChartGradient" (select)="onSelect($event)">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <div class="card" *ngIf="axeamelioration">
+      <div class="card-header">
+        <!-- <h4 class="card-title">Sondage</h4> -->
+        <h4 class="card-title">Axes d'amelioration</h4>
+      </div>
+      <div class="card-body">
+        <div class="card-block">
+          <div id="pie-chart1" class="height-400">
+            <!-- pieChartSingle -->
+            <ngx-charts-pie-chart [scheme]="pieChartColorScheme" [results]="axeamelioration" [legend]="pieChartShowLegend" [explodeSlices]="pieChartExplodeSlices"
+            [labels]="pieChartShowLabels" [doughnut]="pieChartDoughnut" [gradient]="pieChartGradient" (select)="onSelect($event)">
+            </ngx-charts-pie-chart>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card" *ngIf="contre">
+            <div class="card-header">
+                <h4 class="card-title">Statistique des votes contres</h4>
+            </div>
+            <div class="card-body">
+                <div class="card-block">
+                    <div id="horizontal-bar-chart" class="height-400">
+                        <ngx-charts-bar-horizontal [scheme]="barChartColorScheme" [results]="contre" [gradient]="barChartGradient" [xAxis]="barChartShowXAxis"
+                            [yAxis]="barChartShowYAxis" [legend]="barChartShowLegend" [showXAxisLabel]="barChartShowXAxisLabel"
+                            [showYAxisLabel]="barChartShowYAxisLabel" [xAxisLabel]="barChartXAxisLabel"  [yAxisLabel]="barChartYAxisLabel"
+                            (select)="onSelect($event)">
+                        </ngx-charts-bar-horizontal>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

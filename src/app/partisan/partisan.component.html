@@ -120,8 +120,8 @@
               <label for="datenaiss">Date de Naissance</label>
               {{partisan.datenaiss}}
               <!-- [ngModelOptions]="{standalone: true}" -->
-              <!-- <input type="date"  class="form-control border-primary"  name="datenaiss" formControlName="datenaiss"> -->
-              <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" formControlName="datenaiss" [startDate]="{year: today.year(), month: today.month()+1}"></ngb-datepicker>
+              <input type="date"  class="form-control border-primary"  name="datenaiss" formControlName="datenaiss">
+              <!-- <ngb-datepicker #dp [(ngModel)]="model" (navigate)="date = $event.next" formControlName="datenaiss" [startDate]="{year: today.year(), month: today.month()+1}"></ngb-datepicker> -->
 
             </div>
 

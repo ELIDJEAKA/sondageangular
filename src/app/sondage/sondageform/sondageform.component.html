@@ -17,6 +17,53 @@
     </div>
   </div>
 
+
+  <!-- contre   -->
+  <div class="" *ngIf="qcontre" style="margin-top:40px;">
+    <h2 class="form-section font-weight-bold text-center"><i class="ft-info"></i> Quels sont vos raisons ?  </h2>
+    <div class="row-action-primary">
+      <div class="row">
+        <div class="col-md-2">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">Non natif d'abobo</label>
+              <input type="checkbox" class="custom-control-input"  [(ngModel)]="nabobo"  name="nabobo">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-md-3">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">Méconnaissance du terrain</label>
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="nterrain" name="nterrain">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-md-2">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">Mauvaise gestion</label>
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="ngestion" name="ngestion">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-md-3">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">cumul de poste </label>
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="cposte"  name="cposte">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-md-2">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">Pas compétent </label>
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="pcompten" name="pcompten">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
     <div class="" *ngIf="qvote">
       <h2 class="form-section font-weight-bold text-center"><i class="ft-info"></i> Est-ce que vous allez voter  </h2>
       <div class="row text-center">
@@ -185,6 +232,8 @@
 
   </div>
 </div>
+
+
 
   <button *ngIf="qtopic" type="button" class="btn btn-raised btn-primary btn-lg bnt-block" (click)="valider()" style="width : 100%; margin-top:60px;">
     <i class="fa fa-check-square-o"></i> Valider

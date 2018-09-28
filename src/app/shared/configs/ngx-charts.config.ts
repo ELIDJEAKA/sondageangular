@@ -7,14 +7,14 @@ export var barChartView: any[] = [550, 400];
 export var barChartShowXAxis = true;
 export var barChartShowYAxis = true;
 export var barChartGradient = false;
-export var barChartShowLegend = false;
+export var barChartShowLegend = true;
 export var barChartShowXAxisLabel = true;
 export var barChartXAxisLabel = 'Country';
 export var barChartShowYAxisLabel = true;
 export var barChartYAxisLabel = 'Population';
 
 export var barChartColorScheme = {
-    domain: ['#009DA0', '#FF8D60', '#FF586B', '#AAAAAA']
+    domain: ['#009DA0', '#FF8D60', '#FF586B', '#AAAAAA','#000000']
 };
 
 //Pie CHart
@@ -25,7 +25,7 @@ export var pieChartView: any[] = [550, 400];
 export var pieChartShowLegend = true;
 
 export var pieChartColorScheme = {
-    domain: ['#009DA0', '#FF8D60', '#FF586B', '#AAAAAA']
+    domain: ['#009DA0', '#FF8D60', '#FF586B', '#AAAAAA','#000000']
 };
 
 // pie
@@ -52,7 +52,7 @@ export var lineChartShowYAxisLabel = true;
 export var lineChartYAxisLabel = 'Population';
 
 export var lineChartColorScheme = {
-    domain: ['#009DA0', '#FF8D60', '#FF586B', '#AAAAAA']
+    domain: ['#009DA0', '#FF8D60', '#FF586B', '#AAAAAA','#000000']
 };
 
 // line, area
@@ -73,7 +73,7 @@ export var areaChartShowYAxisLabel = true;
 export var areaChartYAxisLabel = 'Population';
 
 export var areaChartColorScheme = {
-    domain: ['#FF8D60', '#FF586B', '#1CBCD8', '#AAAAAA']
+    domain: ['#FF8D60', '#FF586B', '#1CBCD8', '#AAAAAA','#000000']
 };
 
 // line, area
