@@ -82,5 +82,9 @@ export const Full_ROUTES: Routes = [
   {
     path: 'simulateur',
     loadChildren: './simulateur/simulateur.module#SimulateurModule'
+  },
+  {
+    path: 'sondage',
+    loadChildren: './sondage/sondage.module#SondageModule'
   }
 ];

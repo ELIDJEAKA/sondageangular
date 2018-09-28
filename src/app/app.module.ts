@@ -18,6 +18,7 @@ import * as $ from 'jquery';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { SondageComponent } from './sondage/sondage.component';
 
 
 
@@ -27,6 +28,7 @@ import { HttpModule } from '@angular/http';
         AppComponent,
         FullLayoutComponent,
         ContentLayoutComponent,
+        SondageComponent,
 
 
     ],

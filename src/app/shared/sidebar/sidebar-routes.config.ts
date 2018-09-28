@@ -11,9 +11,15 @@ export const ROUTES: RouteInfo[] = [
     },
     { path: '/zone', title: 'Zones', icon: 'fa fa-map-marker', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     { path: '/partisan', title: 'Partisans', icon: 'fa fa-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-    { path: '/evenement', title: 'Evenements', icon: 'fa fa-calendar', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
-    { path: '/equipe', title: 'Equipe', icon: 'fa fa-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     { path: '/simulateur', title: 'Simulateur', icon: 'fa fa-paper-plane', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+    {
+      path: '', title: 'Sondage', icon: 'fa fa-folder-o', class: 'has-sub', badge: '2', badgeClass: 'badge badge-pill badge-danger float-right mr-1 mt-1', isExternalLink: false, submenu: [
+        { path: '/sondage/sondageform', title: 'Questionnaire', icon: 'fa fa-file-word-o', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+        { path: '/sondage/sondagestats', title: 'Satistiques', icon: 'fa fa-bar-chart-o', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+      ]
+    },
+    { path: '/evenement', title: 'Evenements', icon: 'fa fa-calendar', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
+    { path: '/equipe', title: 'Equipe', icon: 'fa fa-users', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] }
     // { path: '/colorpalettes', title: 'Color Palette', icon: 'ft-droplet', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/inbox', title: 'Inbox', icon: 'ft-mail', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     // { path: '/chat', title: 'Chat', icon: 'ft-message-square', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
@@ -168,6 +174,6 @@ export const ROUTES: RouteInfo[] = [
     //         { path: '/pages/gallery', title: 'Gallery', icon: '', class: '', badge: '', badgeClass: '', isExternalLink: false, submenu: [] },
     //     ]
     // },
-    { path: 'https://pixinvent.com/apex-angular-4-bootstrap-admin-template/documentation', title: 'Documentation', icon: 'ft-book', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
+    // { path: 'https://pixinvent.com/apex-angular-4-bootstrap-admin-template/documentation', title: 'Documentation', icon: 'ft-book', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
     // { path: 'https://pixinvent.ticksy.com/', title: 'Support', icon: 'ft-life-buoy', class: '', badge: '', badgeClass: '', isExternalLink: true, submenu: [] },
 ];

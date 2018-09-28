@@ -1,0 +1,191 @@
+<form class="form" autocomplete="off">
+  <div class="form-body">
+    <div class="" *ngIf="qcandidat">
+
+    <h2 class="form-section font-weight-bold text-center"><i class="ft-info"></i> HB est-il votre candidat  </h2>
+    <div class="row text-center">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-raised btn-danger mr-3 btn-lg " style="width : 75%;" (click)="isNotYourCandidatReponse()">
+          <i class="ft-x"></i> NON
+        </button>
+      </div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-raised btn-primary btn-lg" (click)="isYourCandidatReponse()" style="width : 75%;">
+          <i class="fa fa-check-square-o"></i> OUI
+        </button>
+      </div>
+    </div>
+  </div>
+
+    <div class="" *ngIf="qvote">
+      <h2 class="form-section font-weight-bold text-center"><i class="ft-info"></i> Est-ce que vous allez voter  </h2>
+      <div class="row text-center">
+        <div class="col-md-6">
+          <button type="button" class="btn btn-raised btn-danger mr-3 btn-lg " style="width : 75%;">
+            <i class="ft-x"></i> NON
+          </button>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-raised btn-primary btn-lg" (click)="isYourCandidatReponse()" style="width : 75%;">
+            <i class="fa fa-check-square-o"></i> OUI
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="" *ngIf="qcarte">
+      <h2 class="form-section font-weight-bold text-center"><i class="ft-info"></i> Avez vous une carte de membre ?  </h2>
+      <div class="row text-center">
+        <div class="col-md-6">
+          <button type="button" class="btn btn-raised btn-danger mr-3 btn-lg " style="width : 75%;">
+            <i class="ft-x"></i> NON
+          </button>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-raised btn-primary btn-lg" (click)="isYourCandidatReponse()" style="width : 75%;">
+            <i class="fa fa-check-square-o"></i> OUI
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="" *ngIf="qfort">
+      <h2 class="form-section font-weight-bold text-center"><i class="ft-info"></i> Quels sont ses points forts ?  </h2>
+      <div class="row-action-primary">
+        <div class="row">
+          <div class="col-md-2">
+            <label class="custom-control custom-checkbox mr-0 mb-0">
+              <label class="form-check-label" for="inlineCheckbox2">dynamique</label>
+                <input type="checkbox" class="custom-control-input"  [(ngModel)]="dynamique" (click)="test()" name="dynamique">
+                <span class="custom-control-indicator"></span>
+            </label>
+          </div>
+          <div class="col-md-3">
+            <label class="custom-control custom-checkbox mr-0 mb-0">
+              <label class="form-check-label" for="inlineCheckbox2">genereux</label>
+                <input type="checkbox" class="custom-control-input" [(ngModel)]="genereux" name="genereux">
+                <span class="custom-control-indicator"></span>
+            </label>
+          </div>
+          <div class="col-md-2">
+            <label class="custom-control custom-checkbox mr-0 mb-0">
+              <label class="form-check-label" for="inlineCheckbox2">rigoureux</label>
+                <input type="checkbox" class="custom-control-input" [(ngModel)]="rigoureux" name="rigoureux">
+                <span class="custom-control-indicator"></span>
+            </label>
+          </div>
+          <div class="col-md-3">
+            <label class="custom-control custom-checkbox mr-0 mb-0">
+              <label class="form-check-label" for="inlineCheckbox2">homme de terrain </label>
+                <input type="checkbox" class="custom-control-input" [(ngModel)]="homme_de_terrain"  name="homme_de_terrain">
+                <span class="custom-control-indicator"></span>
+            </label>
+          </div>
+          <div class="col-md-2">
+            <label class="custom-control custom-checkbox mr-0 mb-0">
+              <label class="form-check-label" for="inlineCheckbox2">réactif </label>
+                <input type="checkbox" class="custom-control-input" [(ngModel)]="reactif" name="reactif">
+                <span class="custom-control-indicator"></span>
+            </label>
+          </div>
+        </div>
+
+      </div>
+  </div>
+
+<!-- axes d'amelioration   -->
+
+  <div class=" " *ngIf="qfort" style="margin-top:40px;">
+    <h2 class="form-section font-weight-bold text-center"><i class="ft-info"></i> Quels sont les points à améliorer ?  </h2>
+    <div class="row-action-primary">
+      <div class="row">
+        <div class="col-md-2">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">Amélioration de sa proximité</label>
+              <input type="checkbox" class="custom-control-input"  [(ngModel)]="ameprox"  name="ameprox">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-md-3">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">Amélioration son programme de campagne</label>
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="amecamp" name="amecamp">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-md-2">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">Faire des actions pour la jeunesse</label>
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="amejeun" name="amejeun">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-md-3">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">Plus d'implication dans les problèmes sociaux </label>
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="amesoci" name="amesoci">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+        <div class="col-md-2">
+          <label class="custom-control custom-checkbox mr-0 mb-0">
+            <label class="form-check-label" for="inlineCheckbox2">candidat difficile d'accès </label>
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="ameacce" name="ameacce">
+              <span class="custom-control-indicator"></span>
+          </label>
+        </div>
+      </div>
+
+    </div>
+</div>
+
+
+<!-- topic   -->
+<div class="" *ngIf="qtopic" style="margin-top:40px;">
+  <h2 class="form-section font-weight-bold text-center"><i class="ft-info"></i> Quels sont les sujets où il devrait intervenir ?  </h2>
+  <div class="row-action-primary">
+    <div class="row">
+      <div class="col-md-2">
+        <label class="custom-control custom-checkbox mr-0 mb-0">
+          <label class="form-check-label" for="inlineCheckbox2">Criminalite</label>
+            <input type="checkbox" class="custom-control-input"  [(ngModel)]="criminalite"  name="criminalite">
+            <span class="custom-control-indicator"></span>
+        </label>
+      </div>
+      <div class="col-md-3">
+        <label class="custom-control custom-checkbox mr-0 mb-0">
+          <label class="form-check-label" for="inlineCheckbox2">transport</label>
+            <input type="checkbox" class="custom-control-input" [(ngModel)]="transport" name="transport">
+            <span class="custom-control-indicator"></span>
+        </label>
+      </div>
+      <div class="col-md-2">
+        <label class="custom-control custom-checkbox mr-0 mb-0">
+          <label class="form-check-label" for="inlineCheckbox2">Education</label>
+            <input type="checkbox" class="custom-control-input" [(ngModel)]="education" name="education">
+            <span class="custom-control-indicator"></span>
+        </label>
+      </div>
+      <div class="col-md-3">
+        <label class="custom-control custom-checkbox mr-0 mb-0">
+          <label class="form-check-label" for="inlineCheckbox2">Sécurite </label>
+            <input type="checkbox" class="custom-control-input" [(ngModel)]="securite"  name="securite">
+            <span class="custom-control-indicator"></span>
+        </label>
+      </div>
+      <div class="col-md-2">
+        <label class="custom-control custom-checkbox mr-0 mb-0">
+          <label class="form-check-label" for="inlineCheckbox2">Corruption </label>
+            <input type="checkbox" class="custom-control-input" [(ngModel)]="corruption" name="corruption">
+            <span class="custom-control-indicator"></span>
+        </label>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+  <button *ngIf="qtopic" type="button" class="btn btn-raised btn-primary btn-lg bnt-block" (click)="valider()" style="width : 100%; margin-top:60px;">
+    <i class="fa fa-check-square-o"></i> Valider
+  </button>
